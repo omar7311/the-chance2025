@@ -9,6 +9,7 @@ println("test")
 
 
 fun isValidateSudokuPuzzle(board:List<List<Char>>) :Boolean{
+    val subGridSize = sqrt(board.size.toDouble()).toInt()
     for (row in board) {
         if (!isValidUnit(row)) return false
     }
@@ -16,7 +17,6 @@ fun isValidateSudokuPuzzle(board:List<List<Char>>) :Boolean{
         val column = board.map { it[col] }
         if (!isValidUnit(column)) return false
     }
-    val subGridSize = sqrt(board.size.toDouble()).toInt()
     for (i in board.indices step subGridSize) {
         for (j in board.indices step subGridSize) {
             val subgrid = mutableListOf<Char>()
@@ -34,7 +34,9 @@ fun isValidateSudokuPuzzle(board:List<List<Char>>) :Boolean{
 fun isValidUnit(unit: List<Char>): Boolean {
     val seen = mutableSetOf<Char>()
     for (num in unit) {
-        if (num != '-' && num in seen) return false
+        if(num =='-') continue
+        if(num.digitToIntOrNull() !in 1..unit.size) return false
+        if ( num in seen ) return false
         seen.add(num)
     }
     return true

@@ -76,6 +76,17 @@ fun main() {
             )
         ), correctResult = true
     )
+    test(
+        description = "when have dynamic sudoku with 4x4 grid and number out of valid range should return false",
+        result = isValidateSudokuPuzzle(
+            listOf(
+                listOf('1', '2', '0', '3'),
+                listOf('3', '4', '1', '2'),
+                listOf('2', '1', '4', '-'),
+                listOf('4', '3', '2', '1')
+            )
+        ), correctResult = false
+    )
 }
 
 
