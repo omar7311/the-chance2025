@@ -5,8 +5,7 @@ plugins {
 
 android {
     namespace = "com.example.the_chance_week1"
-    compileSdk = 34
-
+    compileSdk = 35
     defaultConfig {
         applicationId = "com.example.the_chance_week1"
         minSdk = 24
